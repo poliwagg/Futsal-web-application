@@ -9,17 +9,17 @@
     <!-- Content Row -->
         <div class="card">
             <div class="card-header py-3 d-flex">
-                <h6 class="m-0 font-weight-bold text-primary">
+                <h6 class="m-0 font-weight-bold text-black">
                     {{ __('booking') }}
                 </h6>
                 <div class="ml-auto">
                     @can('booking_create')
-                    <a href="{{ route('admin.bookings.create') }}" class="btn btn-primary">
-                        <span class="icon text-white-50">
+                    <!-- <a href="{{ route('admin.bookings.create') }}" class="btn btn-secondary">
+                        <span class="icon text-black-50">
                             <i class="fa fa-plus"></i>
                         </span>
                         <span class="text">{{ __('New booking') }}</span>
-                    </a>
+                    </a> -->
                     @endcan
                 </div>
             </div>
@@ -50,7 +50,7 @@
                                 </td>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $booking->user->name }}</td>
-                                <td>{{ $booking->arena->number }}</td>
+                                <td>{{ $booking->arena->lapangan }}</td>
                                 <td>{{  Carbon\Carbon::parse($booking->time_from)->format('M, d D H:i:s') }}</td>
                                 <td>{{  Carbon\Carbon::parse($booking->time_to)->format('M, d D H:i:s') }}</td>
                                 @php

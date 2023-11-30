@@ -19,6 +19,7 @@ class UserSeed extends Seeder
                 'name'           => 'admin',
                 'email'          => 'admin@example.com',
                 'password'       => bcrypt('123'),
+                'notelp'         => '0812345678',
                 'remember_token' => null,
             ],
         ];

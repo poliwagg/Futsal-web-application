@@ -24,8 +24,8 @@
         </style>
     </head>
     <body class="antialiased">
-    <nav class="navbar navbar-light bg-primary d-flex justify-content-center">
-        <a class="navbar-brand text-white" href="/">Booking Futsal</a>
+    <nav class="navbar navbar-light bg-secondary d-flex justify-content-center">
+        <a class="navbar-brand text-white" href="/">Booking Lapangan</a>
     </nav>
       <div class="container my-5">
 
@@ -44,7 +44,7 @@
                         <div class="card-header">
                             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                                 <h1 class="h3 mb-0 text-gray-800">{{ __('Upload bukti pembayaran') }}</h1>
-                                <span class="badge badge-info">Batas Pembayaran {{ \Carbon\Carbon::parse($paymentDue)->format('j F, Y, H:i:s') }}</span>
+                                <!-- <span class="badge badge-info">Batas Pembayaran {{ \Carbon\Carbon::parse($paymentDue)->format('j F, Y, H:i:s') }}</span> -->
                             </div>
                         </div>
                         <div class="card-body"> 

@@ -20,32 +20,43 @@
         <div class="card shadow">
             <div class="card-header">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">{{ __('create arena') }}</h1>
-                    <a href="{{ route('admin.arenas.index') }}" class="btn btn-primary btn-sm shadow-sm">{{ __('Go Back') }}</a>
+                    <h1 class="h3 mb-0 text-gray-800">{{ __('Tambah Lapangan') }}</h1>
+                    <a href="{{ route('admin.arenas.index') }}" class="btn btn-secondary btn-sm shadow-sm">{{ __('Go Back') }}</a>
                 </div>
             </div>
             <div class="card-body">
                 <form action="{{ route('admin.arenas.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="number">{{ __('Nomer') }}</label>
-                        <input type="text" class="form-control" id="number" placeholder="{{ __('number') }}" name="number" value="{{ old('number') }}" />
+                        <label for="lapangan">{{ __('Lapangan') }}</label>
+                        <input type="text" class="form-control" id="lapangan" placeholder="{{ __('lapangan') }}" name="lapangan" value="{{ old('lapangan') }}" />
                     </div>
                     <div class="form-group">
                         <label for="price">{{ __('Harga per Jam') }}</label>
-                        <input type="number" class="form-control" id="price" placeholder="{{ __('price') }}" name="price" value="{{ old('price') }}" />
+                        <input type="lapangan" class="form-control" id="price" placeholder="{{ __('price') }}" name="price" value="{{ old('price') }}" />
                     </div>
-                    <div class="form-group {{ $errors->has('photo') ? 'has-error' : '' }}">
-                        <label for="photo">Photo</label>
-                        <div class="needsclick dropzone" id="photo-dropzone">
+                    <div class="form-group {{ $errors->has('image') ? 'has-error' : '' }}">
+                        <label for="image">Image</label>
+                        <div class="needsclick dropzone" id="image-dropzone">
 
                         </div>
-                        @if($errors->has('photo'))
+                        @if($errors->has('image'))
                             <em class="invalid-feedback">
-                                {{ $errors->first('photo') }}
+                                {{ $errors->first('image') }}
                             </em>
                         @endif
                     </div>
+
+                    <div class="form-group">
+                        <label for="infolokasi">{{ __('Lokasi') }}</label>
+                        <input type="text" class="form-control" id="infolokasi" placeholder="{{ __('infolokasi') }}" name="infolokasi" value="{{ old('infolokasi') }}" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="infofasilitas">{{ __('Fasilitas') }}</label>
+                        <input type="text" class="form-control" id="infofasilitas" placeholder="{{ __('infofasilitas') }}" name="infofasilitas" value="{{ old('infofasilitas') }}" />
+                    </div>
+
                     <div class="form-group">
                         <label for="status">{{ __('Status') }}</label>
                         <select name="status" id="status" class="form-control">
@@ -53,7 +64,7 @@
                             <option value="0">In Active</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">{{ __('Save') }}</button>
+                    <button type="submit" class="btn btn-secondary btn-block">{{ __('Save') }}</button>
                 </form>
             </div>
         </div>
@@ -71,7 +82,7 @@
 @push('script-alt')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
 <script>
-    Dropzone.options.photoDropzone = {
+    Dropzone.options.imageDropzone = {
         url: "{{ route('admin.arenas.storeMedia') }}",
         maxFilesize: 2, // MB
         acceptedFiles: '.jpeg,.jpg,.png,.gif',
@@ -86,23 +97,23 @@
         height: 4096
         },
         success: function (file, response) {
-        $('form').find('input[name="photo"]').remove()
-        $('form').append('<input type="hidden" name="photo" value="' + response.name + '">')
+        $('form').find('input[name="image"]').remove()
+        $('form').append('<input type="hidden" name="image" value="' + response.name + '">')
         },
         removedfile: function (file) {
         file.previewElement.remove()
         if (file.status !== 'error') {
-            $('form').find('input[name="photo"]').remove()
+            $('form').find('input[name="image"]').remove()
             this.options.maxFiles = this.options.maxFiles + 1
         }
         },
         init: function () {
-            @if(isset($arena) && $arena->photo)
-                var file = {!! json_encode($arena->photo) !!}
+            @if(isset($arena) && $arena->image)
+                var file = {!! json_encode($arena->image) !!}
                     this.options.addedfile.call(this, file)
-                this.options.thumbnail.call(this, file, "{{ $arena->photo->getUrl('thumb') }}")
+                this.options.thumbnail.call(this, file, "{{ $arena->image->getUrl('thumb') }}")
                 file.previewElement.classList.add('dz-complete')
-                $('form').append('<input type="hidden" name="photo" value="' + file.file_name + '">')
+                $('form').append('<input type="hidden" name="image" value="' + file.file_name + '">')
                 this.options.maxFiles = this.options.maxFiles - 1
             @endif
         },

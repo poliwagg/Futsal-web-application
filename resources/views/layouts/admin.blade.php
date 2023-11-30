@@ -49,7 +49,7 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                     
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+                    <button id="sidebarToggleTop" class="btn btn-black rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
@@ -100,13 +100,13 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            <!-- <footer class="sticky-footer bg-black">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Sb-Admin</span>
                     </div>
                 </div>
-            </footer>
+            </footer> -->
             <!-- End of Footer -->
 
         </div>
@@ -200,48 +200,48 @@
     scrollX: true,
     pageLength: 100,
     dom: 'lBfrtip<"actions">',
-    buttons: [
-      {
-        extend: 'copy',
-        className: 'btn-outline-secondary mx-2',
-        text: copyButtonTrans,
-        exportOptions: {
-          columns: ':visible'
-        }
-      },
-      {
-        extend: 'csv',
-        className: 'btn-outline-secondary mx-2',
-        text: csvButtonTrans,
-        exportOptions: {
-          columns: ':visible'
-        }
-      },
-      {
-        extend: 'excel',
-        className: 'btn-outline-secondary mx-2',
-        text: excelButtonTrans,
-        exportOptions: {
-          columns: ':visible'
-        }
-      },
-      {
-        extend: 'pdf',
-        className: 'btn-outline-secondary mx-2',
-        text: pdfButtonTrans,
-        exportOptions: {
-          columns: ':visible'
-        }
-      },
-      {
-        extend: 'print',
-        className: 'btn-outline-secondary mx-2',
-        text: printButtonTrans,
-        exportOptions: {
-          columns: ':visible'
-        }
-      },
-    ]
+    // buttons: [
+    //   {
+    //     extend: 'copy',
+    //     className: 'btn-outline-secondary mx-2',
+    //     text: copyButtonTrans,
+    //     exportOptions: {
+    //       columns: ':visible'
+    //     }
+    //   },
+    //   {
+    //     extend: 'csv',
+    //     className: 'btn-outline-secondary mx-2',
+    //     text: csvButtonTrans,
+    //     exportOptions: {
+    //       columns: ':visible'
+    //     }
+    //   },
+    //   {
+    //     extend: 'excel',
+    //     className: 'btn-outline-secondary mx-2',
+    //     text: excelButtonTrans,
+    //     exportOptions: {
+    //       columns: ':visible'
+    //     }
+    //   },
+    //   {
+    //     extend: 'pdf',
+    //     className: 'btn-outline-secondary mx-2',
+    //     text: pdfButtonTrans,
+    //     exportOptions: {
+    //       columns: ':visible'
+    //     }
+    //   },
+    //   {
+    //     extend: 'print',
+    //     className: 'btn-outline-secondary mx-2',
+    //     text: printButtonTrans,
+    //     exportOptions: {
+    //       columns: ':visible'
+    //     }
+    //   },
+    // ]
   });
   $.fn.dataTable.ext.classes.sPageButton = '';
 });

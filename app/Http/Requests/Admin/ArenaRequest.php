@@ -24,9 +24,12 @@ class ArenaRequest extends FormRequest
     public function rules()
     {
         return [
-            'number' => 'required|numeric',
+            'lapangan' => 'required|string',
             'price' => 'required|numeric',
-            'status' => 'required'
+            'infolokasi' => 'required',
+            'infofasilitas' => 'required',
+            'status' => 'required',
+            
         ];
     }
 }

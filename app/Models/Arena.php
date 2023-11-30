@@ -13,14 +13,14 @@ class Arena extends Model implements HasMedia
     use HasFactory,InteractsWithMedia;
 
     protected $appends = [
-        'photo',
+        'image',
     ];
     
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    public function getPhotoAttribute()
+    public function getImageAttribute()
     {
-        $file = $this->getMedia('photo')->last();
+        $file = $this->getMedia('image')->last();
 
         if ($file) {
             $file->url       = $file->getUrl();

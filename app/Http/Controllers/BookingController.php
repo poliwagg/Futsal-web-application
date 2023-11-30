@@ -17,7 +17,7 @@ class BookingController extends Controller
             'date_field' => 'time_from',
             'date_field_to' => 'time_to',
             'field'      => 'user_id',
-            'number'      => 'arena_id',
+            'lapangan'      => 'arena_id',
             'prefix'     => '',
             'suffix'     => '',
         ],
@@ -34,7 +34,7 @@ class BookingController extends Controller
             foreach ($models as $model) {
                 $crudFieldValue = $model->getOriginal($source['date_field']);
                 $crudFieldValueTo = $model->getOriginal($source['date_field_to']);
-                $arena = Arena::findOrFail($model->getOriginal($source['number']));
+                $arena = Arena::findOrFail($model->getOriginal($source['lapangan']));
                 $user = User::findOrFail( $model->getOriginal($source['field']));
                 $timeBreak = \Carbon\Carbon::parse($crudFieldValueTo)->format('H:i');
 
@@ -44,7 +44,7 @@ class BookingController extends Controller
                 }
 
                 $bookings[] = [
-                    'title' => trim($source['prefix'] . "($arena->number)" . $user->name
+                    'title' => trim($source['prefix'] . "($arena->lapangan)" . $user->name
                         . " " ). " " . $timeBreak,
                     'start' => $crudFieldValue,
                     'end' => $crudFieldValueTo,
@@ -58,7 +58,7 @@ class BookingController extends Controller
     public function booking(Request $request){
 
         $arenas = Arena::where('status', 1)->get();
-        $arenaNumber = $request->get('number');
+        $arenaNumber = $request->get('lapangan');
 
         return view('booking', compact('arenas', 'arenaNumber'));
     }

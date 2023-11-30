@@ -15,11 +15,14 @@ class CreateArenasTable extends Migration
     {
         Schema::create('arenas', function (Blueprint $table) {
             $table->id();
-            $table->integer('number');
+            $table->string('lapangan');
             $table->integer('price');
             $table->text('image')->nullable();
+            $table->string('infolokasi');
+            $table->string('infofasilitas');
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
+
         });
     }
 

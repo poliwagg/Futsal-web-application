@@ -9,16 +9,16 @@
     <!-- Content Row -->
         <div class="card">
             <div class="card-header py-3 d-flex">
-                <h6 class="m-0 font-weight-bold text-primary">
-                    {{ __('arena') }}
+                <h6 class="m-0 font-weight-bold text-black">
+                    {{ __('Lapangan') }}
                 </h6>
                 <div class="ml-auto">
                     @can('arena_create')
-                    <a href="{{ route('admin.arenas.create') }}" class="btn btn-primary">
-                        <span class="icon text-white-50">
+                    <a href="{{ route('admin.arenas.create') }}" class="btn btn-secondary">
+                        <span class="icon text-black-50">
                             <i class="fa fa-plus"></i>
                         </span>
-                        <span class="text">{{ __('New arena') }}</span>
+                        <span class="text">{{ __('Tambah Lapangan') }}</span>
                     </a>
                     @endcan
                 </div>
@@ -32,9 +32,11 @@
 
                                 </th>
                                 <th>No</th>
-                                <th>Nomer</th>
+                                <th>Lapangan</th>
                                 <th>Harga</th>
                                 <th>Gambar</th>
+                                <th>Lokasi</th>
+                                <th>Fasilitas</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -46,15 +48,18 @@
 
                                 </td>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $arena->number }}</td>
+                                <td>{{ $arena->lapangan }}</td>
                                 <td>Rp{{ number_format($arena->price,2,',','.') }}</td>
                                 <td>
-                                    @if($arena->photo)
-                                        <a href="{{ $arena->photo->getUrl() }}" target="_blank">
-                                            <img src="{{ $arena->photo->getUrl() }}" width="50px" height="50px">
+                                    @if($arena->image)
+                                        <a href="{{ $arena->image->getUrl() }}" target="_blank">
+                                            <img src="{{ $arena->image->getUrl() }}" width="50px" height="50px">
                                         </a>
                                     @endif
                                 </td>
+                                
+                                <td>{{ $arena->infolokasi }}</td>
+                                <td>{{ $arena->infofasilitas }}</td>
                                 <td>{{ $arena->status }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">

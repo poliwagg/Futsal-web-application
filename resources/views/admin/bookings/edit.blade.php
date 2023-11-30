@@ -32,7 +32,7 @@
                         <label for="arena_id">{{ __('Nomer Lapangan') }}</label>
                         <select name="arena_id" id="arena_id" class="form-control">
                             @foreach($arenas as $arena)
-                                <option {{ $booking->arena->number == $arena->number ? 'selected' : null }} value="{{ $arena->id }}">{{ $arena->number }}</option>
+                                <option {{ $booking->arena->lapangan == $arena->lapangan ? 'selected' : null }} value="{{ $arena->id }}">{{ $arena->lapangan }}</option>
                             @endforeach
                         </select>
                     </div>

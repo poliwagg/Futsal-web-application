@@ -41,14 +41,21 @@ class ArenaController extends Controller
      */
     public function store(ArenaRequest $request)
     {
-        $arena = Arena::create($request->validated());
+        $arena = Arena::create($request->validated([
+            'image' => 'image|file',
+        ]
+        ));
         
-        if ($request->input('photo', false)) {
-            $arena->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
+        // if ($request->input('image', false)) {
+        //     $arena->addMedia(storage_path('app/public/' . $request->input('image')))->toMediaCollection('image');
+        // }
+
+        if($request->file('image')) {
+            $arena['image'] = $request->file('image')->store('images');
         }
 
         return redirect()->route('admin.arenas.index')->with([
-            'message' => 'successfully created !',
+            'message' => 'Lapangan telah diverifikasi dan didaftarkan!',
             'alert-type' => 'success'
         ]);
     }
@@ -86,12 +93,12 @@ class ArenaController extends Controller
     {
         $arena->update($request->validated());
 
-        if ($request->input('photo', false)) {
-            if (!$arena->photo || $request->input('photo') !== $arena->photo->file_name) {
-                $arena->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
+        if ($request->input('image', false)) {
+            if (!$arena->image || $request->input('image') !== $arena->image->file_name) {
+                $arena->addMedia(storage_path('app/public/' . $request->input('image')))->toMediaCollection('image');
             }
-        } elseif ($arena->photo) {
-            $arena->photo->delete();
+        } elseif ($arena->image) {
+            $arena->image->delete();
         }
 
         return redirect()->route('admin.arenas.index')->with([

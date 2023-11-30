@@ -31,7 +31,7 @@ class BookingController extends Controller
     public function create(Request $request)
     {
         $arenas = Arena::where('status', 1)->get();
-        $arenaNumber = $request->get('number');
+        $arenaNumber = $request->get('lapangan');
 
         return view('admin.bookings.create', compact('arenas','arenaNumber'));
     }

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>SportLink</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -27,14 +27,15 @@
        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
      <style>
             body {
-                font-family: 'Nunito', sans-serif;
+                font-family: 'Russo One', sans-serif;
+                background-color: rgb(29, 32, 32);
             }
         </style>
     </head>
     <body class="antialiased">
-        <nav class="navbar navbar-expand-lg navbar-light bg-primary text-white">
+        <nav class="navbar navbar-expand-lg navbar-black bg-dark text-white">
             <div class="container">
-                <a class="navbar-brand text-white" href="#">Booking Futsal</a>
+                <a class="navbar-brand text-white" href="#">SportLink</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -72,13 +73,15 @@
                 @foreach($arenas as $arena)      
                     <div class="col-lg-4 mb-5">
                         <div class="card" style="width: 18rem;">
-                        @if($arena->photo)
-                            <img src="{{ $arena->photo->getUrl() }}" class="card-img-top" alt="...">
+                        @if($arena->image)
+                            <img src="{{ $arena->image->getUrl() }}" class="card-img-top" alt="...">
                         @endif
                         <div class="card-body">
-                            <h5 class="card-title">Nomer Lapangan : {{ $arena->number }}</h5>
+                            <h5 class="card-title">Lapangan : {{ $arena->lapangan }}</h5>
                             <p class="card-text">Harga : Rp{{ number_format($arena->price,2,',','.') }} / Jam</p>
-                            <a href="{{ route('booking', ['number' => $arena->number])  }}" class="btn btn-primary">Booking</a>
+                            <p class="card-text">Lokasi: {{ $arena->infolokasi }}</p>
+                            <p class="card-text">Fasilitas: {{ $arena->infofasilitas }}</p>
+                            <a href="{{ route('booking', ['lapangan' => $arena->lapangan])  }}" class="btn btn-secondary">Booking</a>
                         </div>
                         </div>
                     </div>

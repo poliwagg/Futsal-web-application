@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>SportLink</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -24,8 +24,8 @@
         </style>
     </head>
     <body class="antialiased">
-    <nav class="navbar navbar-light bg-primary d-flex justify-content-center">
-        <a class="navbar-brand text-white" href="/">Booking Futsal</a>
+    <nav class="navbar navbar-light bg-secondary d-flex justify-content-center">
+        <a class="navbar-brand text-white" href="/">Booking Lapangan</a>
     </nav>
       <div class="container my-5">
 
@@ -43,17 +43,17 @@
                     <div class="card shadow">
                         <div class="card-header">
                             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                <h1 class="h3 mb-0 text-gray-800">{{ __('create booking') }}</h1>
+                                <h1 class="h3 mb-0 text-gray-800">{{ __('Booking Lapangan') }}</h1>
                             </div>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('booking.store') }}" method="POST">
                                 @csrf
                                 <div class="form-group mb-2">
-                                    <label for="arena_id">{{ __('Nomer Lapangan') }}</label>
+                                    <label for="arena_id">{{ __('Olahraga') }}</label>
                                     <select name="arena_id" id="arena_id" class="form-control">
                                         @foreach($arenas as $arena)
-                                            <option {{ $arenaNumber == $arena->number ? 'selected' : null }} value="{{ $arena->id }}">{{ $arena->number }}</option>
+                                            <option {{ $arenaNumber == $arena->lapangan ? 'selected' : null }} value="{{ $arena->id }}">{{ $arena->lapangan }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -65,7 +65,7 @@
                                     <label for="time_to">{{ __('Jam Berakhir') }}</label>
                                     <input type="text" class="form-control datetimepicker" id="time_to" name="time_to" value="{{ old('time_to') }}" />
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-block">{{ __('Booking') }}</button>
+                                <button type="submit" class="btn btn-secondary btn-block">{{ __('Booking') }}</button>
                             </form>
                         </div>
                     </div>
